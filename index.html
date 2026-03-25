@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I'm Sorry ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      text-align: center;
+      color: #333;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* PIN SCREEN */
+    #pinScreen {
+      position: absolute;
+      top:0; left:0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #ffe6e6, #ffd9d9);
+      z-index: 10;
+    }
+
+    #lockIcon {
+      font-size: 60px;
+      margin-bottom: 15px;
+    }
+
+    #pinScreen p {
+      font-size: 1.3em;
+      margin-bottom: 15px;
+    }
+
+    #pinDisplay {
+      font-size: 1.8em;
+      letter-spacing: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pinBtn {
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+      font-size: 1.5em;
+      border-radius: 10px;
+      border: none;
+      background-color: #ff6b81;
+      color: white;
+      cursor: pointer;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 70px);
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* CONTENT SCREEN */
+    .container {
+      padding: 20px;
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      display: none;
+    }
+
+    h1 { font-size: 2.2em; }
+    p {
+      font-size: 1em;
+      max-width: 650px;
+      margin: 15px auto;
+      line-height: 1.6;
+    }
+
+    #slideshow {
+      width: 280px;
+      border-radius: 20px;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff6b81;
+      color: white;
+      cursor: pointer;
+      margin: 10px;
+      position: relative;
+      transition: opacity 0.6s ease;
+    }
+
+    .hidden { display: none; }
+
+    .heart { font-size: 40px; animation: beat 1s infinite; }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .fade { animation: fadeIn 2s ease-in-out; }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+    .gif { width:150px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.2); margin:10px; transition: all 0.5s ease-in-out;}
+    .gif-container { display:flex; flex-wrap:wrap; justify-content:center; margin-top:15px; }
+
+    .note { margin-top: 10px; font-weight: bold; color: #ff3b6f; }
+  </style>
+</head>
+<body>
+
+<!-- PIN SCREEN -->
+<div id="pinScreen">
+  <div id="lockIcon">🔐</div>
+  <p>*Clue: the day you said yes*</p>
+  <div id="pinDisplay">______</div>
+  <div class="keypad">
+    <button class="pinBtn">0</button>
+    <button class="pinBtn">1</button>
+    <button class="pinBtn">2</button>
+    <button class="pinBtn">3</button>
+    <button class="pinBtn">4</button>
+    <button class="pinBtn">5</button>
+    <button class="pinBtn">6</button>
+    <button class="pinBtn">7</button>
+    <button class="pinBtn">8</button>
+    <button class="pinBtn">9</button>
+    <button class="pinBtn" id="clearBtn">C</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container fade">
+  <h1>I'm Really Sorry, Mahal 😔</h1>
+
+  <img id="slideshow" src="photo1.jpg">
+
+  <p>
+    Mahal pasensiya na kase hindi ko alam tignan oras ko, sorry masyado akong nadala sa kwento ko kanina :(
+    I'm so sorry napaghintay kita tapos nakatulog kang hindi pa ako naka reply sa'yo.
+    I'm so sorry talaga baby ko :(
+
+    Babawi ako sa'yo mahal ko at lagi mo tatandaan na mahal na mahal na mahal kita.
+    Hindi din totoo yung mga what if's na sinabi ko sa'yo baby kaya huwag mong isipin yun ha?
+
+    Ikaw lang palagi ang mahal ng adi, ikaw lang lagi ang mamahalin ko at ikaw lang ang gusto kong kasama sa lahat ng bagay.
+    Lahat ng talo at panalo ko sa buhay gusto kong ikaw lang kasama ko.
+
+    Inuulit ko adi ko sorry :( sorry sa kakulangan ko ng oras ngayong araw pagiging busy sa school,
+    babawi ako sa'yo baby ko.
+
+    Iloveyouuuuu so much my love 🥺❤️
+    Mahal na mahal na mahal na mahal ka ng adi.
+
+    Imissyouuuuu so much :( Sana mapatawad mo ang adi :(
+  </p>
+
+  <h3>Do you forgive me? 🥺</h3>
+
+  <button id="yesBtn">Yes ❤️</button>
+  <button id="noBtn" onmouseover="moveButton()">No 😢</button>
+
+  <div id="message" class="hidden">
+    <p>Thank you mahal ko 😭❤️ I promise babawi ako sa'yo.</p>
+    <div class="heart">❤️</div>
+  </div>
+
+  <!-- GIF Containers -->
+  <div id="gifContainer" class="gif-container"></div>
+
+  <!-- Note -->
+  <div id="noNote" class="note hidden">
+    Baby mag yes na ikaw po, patawarin mo na ang adi:( let's bati na po mahal🥺<br><br>
+    If you press Yes, you’ll hear a message from me through a song. Please turn your volume up. Iloveyouuuu my love ❤️
+  </div>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // PIN LOGIC
+  const PIN = '021423';
+  let entered = '';
+  const pinDisplay = document.getElementById('pinDisplay');
+  const pinBtns = document.querySelectorAll('.pinBtn');
+  const pinScreen = document.getElementById('pinScreen');
+  const container = document.querySelector('.container');
+  const lockIcon = document.getElementById('lockIcon');
+
+  pinBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(btn.id === 'clearBtn'){ entered=''; }
+      else if(entered.length<6){ entered += btn.textContent; }
+
+      pinDisplay.textContent = entered.padEnd(6,'_');
+
+      if(entered.length===6){
+        if(entered===PIN){
+          pinScreen.style.display='none';
+          container.style.display='block';
+          lockIcon.textContent='🔓';
+        } else{
+          alert("Wrong PIN! You cannot open the page.");
+          entered=''; pinDisplay.textContent='______';
+        }
+      }
+    });
+  });
+
+  // SLIDESHOW
+  let images = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg"];
+  let i=0;
+  setInterval(()=>{i=(i+1)%images.length;document.getElementById("slideshow").src=images[i];},2500);
+
+  // GIFS
+  const noGifs = ['brown-cat-cry1.gif','brown-cat-cry2.gif','brown-cat-cry3.gif','brown-cat-cry4.gif'];
+  const yesGifs = ['sweet1.gif','sweet2.gif','sweet3.gif','sweet4.gif','sweet5.gif','sweet6.gif'];
+  const gifContainer = document.getElementById('gifContainer');
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const bgMusic = document.getElementById('bgMusic');
+  const noNote = document.getElementById('noNote');
+  let noCount = 0;
+
+  // YES BUTTON
+  yesBtn.addEventListener('click',()=>{
+    document.getElementById('message').classList.remove('hidden');
+    gifContainer.innerHTML='';
+    noBtn.style.transition="opacity 0.8s ease";
+    noBtn.style.opacity="0";
+    setTimeout(()=>noBtn.style.display='none',800);
+
+    yesGifs.forEach(src=>{
+      const img=document.createElement('img');
+      img.src=src;
+      img.className='gif';
+      gifContainer.appendChild(img);
+    });
+
+    bgMusic.volume=0;
+    bgMusic.play().catch(()=>console.log("Autoplay blocked."));
+    let vol=0;
+    const fadeIn=setInterval(()=>{
+      if(vol<1){ vol+=0.02; bgMusic.volume=vol;}
+      else clearInterval(fadeIn);
+    },100);
+  });
+
+  // NO BUTTON
+  function moveButton(){
+    let btn=document.getElementById("noBtn");
+    btn.style.position="absolute";
+    btn.style.top=Math.random()*(window.innerHeight-100)+"px";
+    btn.style.left=Math.random()*(window.innerWidth-150)+"px";
+
+    const randomGif=noGifs[Math.floor(Math.random()*noGifs.length)];
+    gifContainer.innerHTML='';
+    const img=document.createElement('img');
+    img.src=randomGif;
+    img.className='gif';
+    gifContainer.appendChild(img);
+
+    noCount++;
+    if(noCount>=5){ noNote.classList.remove('hidden'); }
+  }
+
+</script>
+</body>
+</html>
